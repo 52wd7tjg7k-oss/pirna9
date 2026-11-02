@@ -1,0 +1,339 @@
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PirnaSmart • Pirna Rewards</title><meta name="theme-color" content="#087b77"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="PirnaSmart • Pirna Rewards"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css"><style>
+:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#203332;background:#edf3f1}*{box-sizing:border-box}body{margin:0;padding:20px 10px}button,input,select{font:inherit}button{cursor:pointer}.app{max-width:490px;margin:auto;background:white;border-radius:18px;overflow:hidden;border:1px solid #d9e5e1;box-shadow:0 12px 35px #163d3020}.hero{background:linear-gradient(115deg,#087b77,#075651);color:white;padding:15px 17px}.brand{font-size:22px;font-weight:850}.search{background:white;border-radius:11px;margin-top:12px;display:flex;align-items:center;gap:7px;padding:0 11px;color:#667}.search input{height:42px;border:0;outline:0;width:100%;color:#233}.body{padding:15px;min-height:450px}.heading{font-size:19px;font-weight:800}.sub{font-size:12px;color:#687b78;line-height:1.5}.row{display:flex;justify-content:space-between;align-items:center;gap:9px}.chips{display:flex;gap:7px;overflow-x:auto;padding:13px 0;scrollbar-width:none}.chip{border:1px solid #d9e5e1;background:white;border-radius:22px;padding:9px 12px;white-space:nowrap;font-size:12px;font-weight:650}.chip.on{background:#087b77;color:white;border-color:#087b77}.map{height:355px;position:relative;overflow:hidden;border-radius:13px;border:1px solid #d9e5e1;background:#e5ede2;touch-action:pan-y}.tiles{position:absolute;inset:0}.tiles img{position:absolute;width:256px;height:256px;max-width:none}.pin{position:absolute;transform:translate(-50%,-100%);z-index:2;border:2px solid white;border-radius:12px;background:#087b77;color:white;padding:7px 9px;box-shadow:0 3px 9px #0005;font-size:13px;font-weight:800;white-space:nowrap}.pin.street{background:#d39435}.pin.food{background:#c65e48}.pin.sight{background:#7762b7}.pin.event{background:#4d729f}.pin.on{outline:3px solid #f6d06e;z-index:4}.mapbtn{background:white;border:0;border-radius:12px;padding:11px;color:#183b3a;box-shadow:0 2px 9px #0003;font-size:12px;font-weight:750}.credit{position:absolute;left:7px;bottom:6px;background:#ffffffe8;color:#485f59;border-radius:5px;padding:4px 6px;font-size:9px;z-index:3}.panel{background:white;border:1px solid #d9e5e1;border-radius:13px;padding:14px;margin-top:13px}.btn{border:0;background:#087b77;color:white;border-radius:10px;padding:11px 13px;font-size:13px;font-weight:750}.btn.alt{background:#eef5f2;color:#1e4640;border:1px solid #d9e5e1}.field{width:100%;background:white;color:#203332;border:1px solid #d9e5e1;border-radius:10px;padding:11px;font-size:13px}.cardtitle{font-size:14px;font-weight:800}.tag{background:#e2f5ee;color:#087b77;padding:5px 8px;border-radius:8px;font-size:11px;font-weight:750}.demo{background:#fff0cc;color:#74510b}.option{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:11px 0;border-bottom:1px solid #e3ebe7}.option:last-child{border:0}.smallbtn{background:#eef5f2;border:1px solid #d9e5e1;border-radius:8px;padding:8px 10px;font-size:12px;font-weight:700;color:#203332}.pricebox{background:linear-gradient(115deg,#07635c,#0a857a);color:white;border-radius:13px;padding:17px;margin-top:14px}.bottom{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid #d9e5e1;background:white}.bottom button{border:0;background:transparent;padding:12px 2px;display:flex;flex-direction:column;align-items:center;gap:5px;color:#637975;font-size:11px}.bottom button.on{color:#087b77;font-weight:850}.ico{font-size:22px}.hidden{display:none!important}.num{width:26px;height:26px;border-radius:50%;background:#e0f3ee;color:#087b77;display:grid;place-items:center;font-size:12px;font-weight:850;flex-shrink:0}.stop{display:flex;gap:9px;align-items:center;padding:11px 0;border-bottom:1px solid #e3ebe7}.filterpanel{background:#f3f8f6;border:1px solid #d9e5e1;border-radius:12px;padding:13px;margin-bottom:12px}.checkrow{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:13px}.checkrow input{width:18px;height:18px;accent-color:#087b77}.notice{position:absolute;left:10px;right:10px;bottom:30px;background:#fffffff2;color:#344944;padding:9px;border-radius:9px;font-size:11px;z-index:6}.twocol{display:grid;grid-template-columns:1fr 1fr;gap:9px}.buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.buttons button{min-height:43px}.muted{color:#657a75}.fine{font-size:11px;color:#71827e}.sectiongap{margin-top:12px}.badge{display:inline-block;font-size:10px;font-weight:800;border-radius:6px;padding:3px 6px;background:#e3f3ef;color:#087b77}.badge.sim{background:#fff0cc;color:#815900}.a{color:#087b77;text-decoration:underline;font-size:12px}.route-info{font-size:12px;line-height:1.7}.eventdate{font-size:12px;font-weight:800;color:#087b77}a{color:#087b77} @media(max-width:360px){.bottom button{font-size:10px}.body{padding:12px}.btn{padding:9px 7px}}
+
+.mapwrap{position:relative}.map{touch-action:auto!important}
+.leaflet-container{font:inherit;background:#e5ede2}
+.leaflet-control-attribution{font-size:10px!important}
+.mapoverlay{position:absolute;right:10px;top:10px;z-index:600}
+.map-route-actions{display:flex;gap:8px;align-items:center;justify-content:space-between;
+background:#e8f7f2;border:1px solid #b7d9ce;border-radius:10px;padding:10px;margin-top:10px}
+.route-dot{display:flex;align-items:center;justify-content:center;min-width:30px;height:30px;
+border-radius:17px;background:#087b77;color:white;border:2px solid white;box-shadow:0 2px 6px #0004;font-weight:850;font-size:12px}
+.route-dot.start{background:#cf8c19}
+.pin-marker{display:flex;align-items:center;justify-content:center;min-width:32px;height:32px;
+background:#087b77;color:white;border:2px solid white;border-radius:11px;
+box-shadow:0 2px 7px #0005;font-size:13px;font-weight:800;white-space:nowrap;padding:2px 5px}
+.pin-marker.street{background:#d39435}.pin-marker.food{background:#c65e48}
+.pin-marker.sight{background:#7762b7}.pin-marker.event{background:#4d729f}
+.pin-marker.on{outline:3px solid #f6d06e}
+
+/* Erlebnisroute: klar gegliederte Planung */
+.route-overview{display:flex;align-items:center;justify-content:space-between;background:linear-gradient(110deg,#e9f8f3,#f5faf8);border:1px solid #cfe8df;border-radius:14px;padding:15px;margin-top:15px}
+.route-overview strong{display:block;font-size:17px;margin:4px 0;color:#08635d}
+.mini-label{font-size:10px;font-weight:800;letter-spacing:.05em;color:#7a918a}
+.overview-icon{font-size:31px}
+.step-title{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.step-number{width:30px;height:30px;border-radius:10px;background:#087b77;color:#fff;font-weight:850;display:grid;place-items:center;flex-shrink:0}
+.choice-heading{display:flex;justify-content:space-between;align-items:center;margin-top:18px;padding:9px 0;border-bottom:2px solid #e2eee9;font-size:13px;font-weight:800}
+.option-text,.stop-text,.discover-card-info{flex:1;min-width:0}
+.option .smallbtn{flex-shrink:0}
+.smallbtn.selected{background:#e1f4ed;border-color:#b5dfcd;color:#086e60}
+.route-buttons{display:flex;gap:8px;margin-top:14px}
+.route-buttons .btn{flex:1}
+.empty-state{padding:16px;background:#f4f8f6;border-radius:10px;color:#657a75;font-size:12px;margin-top:12px}
+/* Entdecken: Kategorien mit übersichtlichen Einträgen */
+.discover-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:15px 0 20px}
+.discover-tile{border:1px solid #dce8e3;background:#f8fbf9;border-radius:12px;min-height:72px;padding:10px 3px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;color:#34564e}
+.discover-tile span{font-size:23px}.discover-tile strong{font-size:11px}
+.discover-tile.on{background:#e3f5ee;border:2px solid #087b77;color:#086a62}
+.discover-section{margin:20px 0 25px}
+.discover-section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.discover-section-title{font-size:16px;font-weight:850}
+.count-pill{border-radius:18px;padding:5px 10px;background:#e8f4ee;color:#087b77;font-size:12px;font-weight:800}
+.discover-card{border:1px solid #dfe9e5;border-radius:13px;padding:13px;margin:9px 0;background:#fff}
+.discover-card-top,.discover-card-foot{display:flex;align-items:center;justify-content:space-between;gap:9px}
+.discover-card-top .smallbtn{flex-shrink:0}
+.discover-card-foot{margin-top:13px;padding-top:10px;border-top:1px solid #edf2ef}
+.info-pill{font-size:11px;color:#476f65;background:#eef7f2;border-radius:8px;padding:6px 8px}
+
+
+/* iPad und Desktop: keine schmale, zentrierte Telefonansicht mehr */
+html,body{width:100%;min-height:100%;margin:0}
+body{padding:0;background:#fff}
+.app{width:100%;max-width:none;min-height:100vh;min-height:100dvh;margin:0;border:0;border-radius:0;box-shadow:none;display:flex;flex-direction:column;overflow:visible}
+.hero{padding:clamp(15px,2.4vw,26px) clamp(16px,3vw,42px)}
+.hero .search{max-width:780px}
+.body{width:100%;flex:1;min-height:0;padding:clamp(16px,2.5vw,32px) clamp(16px,3vw,42px) 30px}
+.mapwrap{width:100%}
+.map{width:100%;height:clamp(420px,calc(100dvh - 350px),900px);border-radius:14px}
+.bottom{position:sticky;bottom:0;z-index:1000;flex-shrink:0;padding-bottom:env(safe-area-inset-bottom,0px);box-shadow:0 -3px 16px #183c3010}
+.bottom button{min-height:65px}
+.chips{flex-wrap:wrap;overflow:visible}
+#routes,#discover,#info{max-width:1150px;margin:0 auto}
+#routes .panel,#routes .pricebox,#discover .discover-card,#info .panel{width:100%}
+@media(min-width:950px){
+  #routes .panel{padding:22px}
+  #routes .option{padding:15px 5px}
+  #discover .discover-section{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  #discover .discover-section-head{grid-column:1/-1}
+  #discover .discover-card{margin:0}
+}
+@media(max-width:650px){
+  .hero{padding:16px}
+  .body{padding:15px 13px 22px}
+  .map{height:max(360px,calc(100dvh - 345px));max-height:660px}
+  .chips{flex-wrap:nowrap;overflow-x:auto}
+  .bottom button{min-height:60px}
+}
+
+.parking-info{display:flex;align-items:center;gap:10px;margin:13px 0;padding:11px 13px;background:#ecf9f4;border:1px solid #cce9dc;border-radius:12px;font-size:12px;color:#245d50;line-height:1.45}
+.parking-info .smallbtn{margin-left:auto;flex-shrink:0;white-space:nowrap}
+.parking-dot{height:13px;width:13px;border-radius:4px;background:#27b49b;border:2px solid #149e8b;flex-shrink:0}
+.map-legend{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:11px;color:#56706a;margin:9px 0 4px}
+.legend-color{display:inline-block;width:11px;height:11px;border:2px solid #149e8b;background:#27b49b44;border-radius:2px;vertical-align:middle}
+.charge-pin{background:#f5fff8;border:2px solid #17866f;border-radius:50%;font-size:16px;width:26px;height:26px;display:grid;place-items:center;box-shadow:0 2px 7px #134f4250}
+.pin-marker.survey{background:#0c8b76;color:#fff;border:2px solid #fff;border-radius:13px;padding:7px 4px;font-weight:900;white-space:nowrap;font-size:11px;box-shadow:0 2px 8px #0004}
+@media(max-width:620px){.parking-info{flex-wrap:wrap}.parking-info .smallbtn{margin-left:0}.map-legend{gap:5px 10px}}
+</style></head><body><main class="app"><header class="hero"><div class="brand">📍 Pirna<span style="color:#a4f0d9">Smart</span></div><div style="font-size:12px;color:#c7f0e9;margin-top:3px">Parken. Entdecken. Erleben.</div><label class="search">⌕ <input id="search" placeholder="Parkplatz oder Ort suchen" aria-label="Parkplatz oder Ort suchen"></label></header><div class="body">
+<section id="parking"><div class="row"><div><div class="heading">Parken in Pirna</div><div class="sub">Wähle einen Ort direkt auf der Karte.</div></div><span class="tag demo">Demo-Daten</span></div><div class="chips" id="chips"><button class="chip on" data-chip="all">Alle</button><button class="chip" data-chip="advanced">☷ Filter</button><button class="chip" data-chip="garage">🅿️ Parkhäuser</button><button class="chip" data-chip="street">🚗 Straßen & Parkplätze</button><button class="chip" data-chip="sight">🏛️ Sehenswürdigkeiten</button><button class="chip" data-chip="food">🍽️ Gastro</button><button class="chip" data-chip="event">📅 Events</button></div><div class="filterpanel hidden" id="advanced"><div class="cardtitle">Weitere Filter</div><label class="checkrow"><input type="checkbox" id="cheap"> Parken bis 1,50 € pro Stunde</label><label class="checkrow"><input type="checkbox" id="freesights"> Sehenswürdigkeiten ohne Eintritt</label><div class="row sectiongap"><button class="btn" id="done">Filter übernehmen</button><button class="smallbtn" id="reset">Zurücksetzen</button></div></div><div class="mapwrap">
+<div class="map" id="map" aria-label="Interaktive zweidimensionale Karte von Pirna"></div>
+<div class="mapoverlay"><button class="mapbtn" id="locate">⌖ Standort finden</button></div>
+<div class="notice hidden" id="notice"></div></div>
+<div id="map-route-actions" class="map-route-actions hidden">
+<div><strong>🧭 Deine Erlebnisroute</strong><div class="sub" id="map-route-count">Alle Stopps auf der Karte</div></div>
+<button class="btn" id="google-route">↗ In Google Maps</button></div>
+<div class="map-legend"><span><i class="legend-color"></i> Flächen: 🟦 Parkhaus · 🟧 Straße · 🟩 Parkplatz</span><span>⚡ 9 Ladepunkte (Standortangaben)</span><span>Belegung: unbekannt</span></div><div id="detail"></div></section>
+<section id="routes" class="hidden"><div class="heading">🧭 Deine Erlebnisroute</div><div class="sub">In 3 Schritten zum Ausflug durch Pirna.</div>
+<div class="route-overview"><div><span class="mini-label">DEINE PLANUNG</span><strong id="route-overview-count">3 Ziele ausgewählt</strong><span class="sub">Start → Entdecken → Genießen</span></div><span class="overview-icon">🗺️</span></div><div class="panel"><div class="step-title"><span class="step-number">1</span><div><div class="cardtitle">Start & Parken</div><div class="sub">Lege deinen Ausgangspunkt fest.</div></div></div><select class="field sectiongap" id="start"></select><div class="twocol sectiongap"><div><div class="sub">Personen</div><select class="field" id="people"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div><div><div class="sub">Parkdauer (Std.)</div><select class="field" id="hours"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option><option>6</option></select></div></div></div><div class="panel"><div class="step-title"><span class="step-number">2</span><div><div class="cardtitle">Ziele auswählen</div><div class="sub">Stelle dir deinen Tag zusammen.</div></div></div>
+<div class="choice-heading"><span>🏛️ Sehenswürdigkeiten</span><span class="mini-label">KULTUR & ORTE</span></div><div id="sight-options"></div>
+<div class="choice-heading"><span>🍽️ Essen & Trinken</span><span class="mini-label">GENUSS</span></div><div id="food-options"></div></div><div class="panel"><div class="step-title"><span class="step-number">3</span><div><div class="cardtitle">Dein Tagesplan</div><div class="sub">Die Reihenfolge deiner Stopps.</div></div></div>
+<div id="stops"></div><div class="route-buttons"><button class="btn" id="showroute">🗺️ Route auf Karte</button><button class="smallbtn" id="clearroute">Zurücksetzen</button></div></div><div class="pricebox"><div style="font-size:12px;color:#c8f1e8">Geschätzte Kosten pro Person</div><div id="per" style="font-size:35px;font-weight:850;margin:6px 0">–</div><div id="breakdown" class="route-info"></div><div class="fine" style="color:#d4fff1">* Bei Parkflächen aus der Liste ohne unbekannte Parkgebühren.</div><div class="row sectiongap" style="border-top:1px solid #ffffff55;padding-top:12px;font-weight:800"><span>Gesamt für alle</span><span id="total"></span></div></div><p class="fine">Für die neu aufgenommenen Parkflächen sind Gebühren unbekannt und deshalb nicht in der Kostenschätzung enthalten. Bisherige Parktarife sind Richtwerte, Gastro-Budgets Testwerte. Die Verbindungslinie auf der Karte ist schematisch; Google Maps berechnet den tatsächlichen Fußweg.</p></section>
+<section id="discover" class="hidden"><div class="heading">✨ Pirna entdecken</div><div class="sub">Die schönsten Orte, Restaurants und Veranstaltungen auf einen Blick.</div>
+<div class="discover-nav"><button class="discover-tile on" data-discover="all"><span>✨</span><strong>Übersicht</strong></button><button class="discover-tile" data-discover="sight"><span>🏛️</span><strong>Erleben</strong></button><button class="discover-tile" data-discover="food"><span>🍽️</span><strong>Genießen</strong></button><button class="discover-tile" data-discover="event"><span>📅</span><strong>Events</strong></button></div>
+<div id="discovercards"></div></section>
+<section id="info" class="hidden"><div class="heading">ℹ️ Informationen</div><div class="panel"><div class="cardtitle">🅿️ Parken in Pirna</div><p class="sub">Die 37 kartierten Bereiche aus deiner Koordinatenliste sind direkt in die bestehenden Filter eingeordnet (4 Parkhäuser, 1 Straßenparkzone, 31 Parkflächen und 1 Motorradparkplatz). Für diese sind freie Plätze, Gebühren, Zufahrt und Parkberechtigung nicht bekannt. Angaben vor Ort prüfen. Die bisherigen Parkhaus-Belegungszahlen sind Demo-Werte. Der neue Credits-Reiter ist ein Pilot ohne einlösbare Rabatte.</p><a class="a" href="https://www.pirna.de/leben-in-pirna/mobilitaet-verkehr/parken/" target="_blank" rel="noopener">Offizielle Parkinformationen ↗</a></div><div class="panel"><div class="cardtitle">📅 Veranstaltungen</div><p class="sub">Die Veranstaltungen werden beim Öffnen und alle 30 Minuten aus dem veröffentlichten Datenstand geladen. Bei fehlender Verbindung bleibt der letzte gespeicherte Stand sichtbar. <strong id="event-status">Aktualisierung wird geprüft …</strong></p><a class="a" href="https://www.pirna.de/pirna-erleben/veranstaltungen/veranstaltungskalender/" target="_blank" rel="noopener">Aktueller Veranstaltungskalender ↗</a></div><div class="panel"><div class="cardtitle">🔎 Demo-Daten</div><p class="sub">Bei bestehenden Parkhäusern: freie Plätze nur simuliert. Bei 37 neu erfassten Parkflächen: Belegung ausdrücklich unbekannt. Koordinaten aus Nutzerdatei; die dargestellten Umrisse sind nicht amtlich überprüft. Ladepunkte aus der Liste ohne Live-Status. Gastronomie-Budgets sind Testwerte.</p></div><div class="panel"><div class="cardtitle">🚌 Bus & Bahn</div><p class="sub">Eine Fahrplanauskunft kann in einer späteren Ausbaustufe ergänzt werden.</p></div></section>
+<section id="credits" class="hidden">
+ <div class="heading">⭐ Pirna Credits</div>
+ <div class="sub">Entdecke Pirna und sammle Punkte. Pilot-Demo ohne echte Rabatte.</div>
+ <div class="pricebox"><div style="font-size:12px;color:#d4fff1">DEIN GUTHABEN AUF DIESEM GERÄT</div><div style="font-size:38px;font-weight:850;margin:7px 0" id="credit-balance">0 Credits</div><div class="fine" style="color:#d4fff1">Lokal gespeichert · kein Konto · kein übertragbares Guthaben</div></div>
+ <div class="panel"><div class="cardtitle">📍 Besuch nachweisen</div><p class="sub">Wähle einen Ort. Für den Besuchsnachweis prüft die App deinen GPS-Standort zweimal im Abstand von 60 Sekunden. Erforderlich: innerhalb von 120 m. Ein Ort zählt einmal pro Tag.</p>
+ <select class="field sectiongap" id="credit-place"><option value="">Ort auswählen</option></select>
+ <div class="sectiongap hidden" id="partner-row"><label class="sub" for="partner-code">Partnercode vom Restaurant (für den späteren Echtbetrieb)</label><input class="field" id="partner-code" placeholder="Partnercode"></div>
+ <button class="btn sectiongap" id="credit-check">📍 Besuch prüfen</button><div class="sub sectiongap" id="credit-status" aria-live="polite">Noch kein Besuch bestätigt.</div></div>
+ <div class="panel"><div class="cardtitle">🧭 Routenbonus</div><p class="sub">Bestätige mindestens zwei ausgewählte Stopps deiner Erlebnisroute am selben Tag. Dafür gibt es einmal täglich 50 Extra-Credits.</p><button class="btn alt" id="credit-route">Routenbonus prüfen</button></div>
+ <div class="panel"><div class="cardtitle">🎁 Beispielprämien</div><p class="sub">Nur zur Demonstration. Es gibt noch keine teilnehmenden Restaurants und keine einlösbaren Rabatte.</p>
+ <div class="option"><div><div class="cardtitle">☕ Getränke-Upgrade</div><div class="sub">150 Credits · Muster-Gutschein</div></div><button class="smallbtn" data-reward="150">Ansehen</button></div>
+ <div class="option"><div><div class="cardtitle">🍽️ 5 % auf eine Hauptspeise</div><div class="sub">300 Credits · Muster-Gutschein</div></div><button class="smallbtn" data-reward="300">Ansehen</button></div>
+ <div class="sub sectiongap" id="credit-voucher" aria-live="polite"></div></div>
+ <div class="panel"><div class="cardtitle">🔒 Sicherheit & Datenschutz</div><p class="sub">Die Standortprüfung läuft nur nach deiner Zustimmung. Standortkoordinaten werden nicht gespeichert. Credits bleiben auf diesem Gerät. Für echte Rabatte braucht es Partnervereinbarungen, einen Server und einmalige QR- oder Kassen-Codes, damit Punkte nicht manipulierbar sind.</p></div>
+</section></div><nav class="bottom"><button data-tab="parking" class="on"><span class="ico">🅿️</span>Parken</button><button data-tab="routes"><span class="ico">🧭</span>Erlebnisroute</button><button data-tab="discover"><span class="ico">🍽️</span>Entdecken</button><button data-tab="info"><span class="ico">ℹ️</span>Infos</button><button data-tab="credits"><span class="ico">⭐</span>Credits</button></nav></main>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>if(!window.L)document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"><\/script>');</script>
+<script>if(!window.L)document.write('<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"><\/script>');</script>
+<script>if(!window.L){document.getElementById('map').innerHTML='<div style="padding:20px"><strong>Kartenbibliothek nicht geladen.</strong><p>Bitte Internetverbindung prüfen und Seite neu laden. Die Karte benötigt Leaflet und OpenStreetMap.</p><a href="https://www.openstreetmap.org/#map=15/50.9625/13.942" target="_blank">Pirna in OpenStreetMap öffnen ↗</a></div>';}else{window.__pirnaMapReady=true}</script>
+<script>if(window.__pirnaMapReady){(()=>{'use strict';const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],fmt=n=>n.toLocaleString('de-DE',{style:'currency',currency:'EUR'});const importedAreas=[{"id":"area1","name":"Parkplatz Netto","coords":[[50.9540278,13.9358056],[50.9537778,13.9360556],[50.9534722,13.9352778],[50.9536389,13.9349167]],"chargers":[],"center":[50.9537292,13.9355139],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area2","name":"Parkplatz PEZ Pirnaer Einkaufszentrum","coords":[[50.9483611,13.9423056],[50.9498333,13.94325],[50.9499167,13.94375],[50.9488056,13.9441111]],"chargers":[],"center":[50.9492292,13.9433542],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area3","name":"Parkplatz Geibeltbad Pirna","coords":[[50.9457778,13.94275],[50.9450556,13.9431389],[50.9442222,13.9429722],[50.9450278,13.9425]],"chargers":[],"center":[50.9450208,13.9428403],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area4","name":"Parkplatz Obstscheune","coords":[[50.93025,13.9771111],[50.9299444,13.9788056],[50.9294722,13.9782222],[50.9298056,13.9770278]],"chargers":[{"name":"Sachsen Energie Ladesäule","coords":[50.9295278,13.9779444]}],"center":[50.929868,13.9777917],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area5","name":"Calisthenics Park","coords":[[50.9509722,13.9608889],[50.9509167,13.9616111],[50.9506111,13.9615278],[50.9506944,13.9608333]],"chargers":[],"center":[50.9507986,13.9612153],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area6","name":"Parkplatz Remscheider Str.","coords":[[50.9513611,13.9575],[50.95125,13.9581111],[50.9506944,13.9579444],[50.9507778,13.9573333]],"chargers":[],"center":[50.9510208,13.9577222],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area7","name":"Parkplatz Rewe Varkausring","coords":[[50.9529722,13.9563611],[50.95275,13.95775],[50.9523056,13.9574444],[50.9523889,13.9566389]],"chargers":[{"name":"Shell Recharge Ladesäule","coords":[50.9527778,13.9577222]}],"center":[50.9526042,13.9570486],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area8","name":"Parkplatz Remscheider Str. Nr. 2","coords":[[50.9535556,13.9508889],[50.9535833,13.9514722],[50.9531944,13.9515],[50.9531944,13.9509444]],"chargers":[],"center":[50.9533819,13.9512014],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area9","name":"Parkplatz Sporteinrichtung Struppener Str.","coords":[[50.9563889,13.9618611],[50.9556944,13.9615278],[50.9558611,13.9611111],[50.9564722,13.9613611]],"chargers":[],"center":[50.9561042,13.9614653],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area10","name":"Parkplatz Kaufland Pirna Sonnenstein","coords":[[50.9573056,13.9576389],[50.9571389,13.95925],[50.9563611,13.9590278],[50.95675,13.9575278]],"chargers":[{"name":"Sachsen Energie Ladesäule","coords":[50.9571667,13.9595833]}],"center":[50.9568889,13.9583611],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area11","name":"Parkplatz Aldi Struppener Str.","coords":[[50.95725,13.9529167],[50.9568611,13.9530556],[50.9571111,13.9512222],[50.9574167,13.9513056]],"chargers":[{"name":"Ladesäule Aldi","coords":[50.9571944,13.9527222]}],"center":[50.9571597,13.952125],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area12","name":"Parkplatz Netto Struppener Str.","coords":[[50.9580833,13.9500556],[50.9579722,13.9499444],[50.9576389,13.9515],[50.9577778,13.9515556]],"chargers":[],"center":[50.9578681,13.9507639],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area13","name":"Parkplatz Klinikum Pirna","coords":[[50.9579444,13.9535278],[50.9575556,13.9534167],[50.9577222,13.9519167],[50.9580556,13.9519722]],"chargers":[],"center":[50.9578195,13.9527083],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area14","name":"Parkplatz Schloßpark","coords":[[50.9606944,13.95025],[50.9603056,13.9511944],[50.9600278,13.9510556],[50.9603056,13.9499722]],"chargers":[],"center":[50.9603333,13.950618],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area15","name":"Parkplatz Schloss Sonnenstein","coords":[[50.9609722,13.9461667],[50.9609722,13.9470833],[50.9605,13.947],[50.9604722,13.9462222]],"chargers":[],"center":[50.9607291,13.946618],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area16","name":"Parkplatz des Vermessungsamtes","coords":[[50.9598056,13.9483611],[50.9597778,13.9486667],[50.9595833,13.9486111],[50.9596111,13.9483611]],"chargers":[],"center":[50.9596945,13.9485],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area17","name":"Parkplatz Pirna-Sonnenstein","coords":[[50.9607222,13.9503333],[50.9603333,13.9511944],[50.9600278,13.9509722],[50.9602778,13.9499444]],"chargers":[],"center":[50.9603403,13.9506111],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area18","name":"Parkhaus am Steinplatz","coords":[[50.9638611,13.9468889],[50.9638333,13.9478889],[50.9635278,13.9478889],[50.9635,13.9469167]],"chargers":[],"center":[50.9636805,13.9473958],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"garage","parkingCategoryLabel":"Parkhaus / Tiefgarage"},{"id":"area19","name":"Parkplatz Dippoldeswalder Str.","coords":[[50.9566667,13.9275556],[50.9566944,13.9288611],[50.9564167,13.9288889],[50.9562778,13.9281111]],"chargers":[],"center":[50.9565139,13.9283542],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area20","name":"Parkplatz Lidl Dresdner Str.","coords":[[50.9575278,13.9271667],[50.9575556,13.9279167],[50.9567778,13.9272222],[50.9572222,13.9274722]],"chargers":[{"name":"Ladesäule Lidl","coords":[50.9572778,13.9276667]}],"center":[50.9572709,13.9274444],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area21","name":"Parkplatz Obi","coords":[[50.9593889,13.9272222],[50.9593611,13.9278889],[50.9585,13.9271111],[50.9585278,13.9278333]],"chargers":[],"center":[50.9589445,13.9275139],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area22","name":"Parkplatz Königsteiner Str.","coords":[[50.9574167,13.9357222],[50.9574444,13.9368333],[50.9569722,13.9368056],[50.957,13.9358056]],"chargers":[],"center":[50.9572083,13.9362917],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area23","name":"Parkhaus Stadtmitte Apcoa","coords":[[50.9583611,13.9361389],[50.9583889,13.9373889],[50.9580278,13.9373611],[50.9579722,13.9362222]],"chargers":[],"center":[50.9581875,13.9367778],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"garage","parkingCategoryLabel":"Parkhaus / Tiefgarage"},{"id":"area24","name":"Parkplatz Netto Breite Str.","coords":[[50.9586389,13.9377778],[50.9586667,13.9385278],[50.9581667,13.9383056],[50.9580278,13.938]],"chargers":[{"name":"Ladesäule Vattenfall","coords":[50.9581389,13.938]}],"center":[50.958375,13.9381528],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area25","name":"Parkplatz Netto Schandauer Str.","coords":[[50.9584167,13.9428889],[50.9584167,13.9435278],[50.9578333,13.9429444],[50.9578611,13.9435556]],"chargers":[{"name":"Ladesäule Amperio","coords":[50.9579722,13.9433889]}],"center":[50.958132,13.9432292],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area26","name":"Parkplatz P+R Bahnhofstraße","coords":[[50.9616944,13.9299722],[50.9616944,13.9306944],[50.9611944,13.9308611],[50.96125,13.9301389]],"chargers":[],"center":[50.9614583,13.9304166],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area27","name":"Parkplatz P+R Bahnhof","coords":[[50.96275,13.9305],[50.9630833,13.9321389],[50.9628889,13.9321389],[50.9625833,13.9306667]],"chargers":[],"center":[50.9628264,13.9313611],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area28","name":"Tiefgarage Scheunenhof Center","coords":[[50.9611111,13.9360556],[50.9611111,13.9370556],[50.9608056,13.93625],[50.9608056,13.9368611]],"chargers":[{"name":"Ladesäule SachsenEnergie","coords":[50.9609444,13.9360556]}],"center":[50.9609583,13.9365556],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"garage","parkingCategoryLabel":"Parkhaus / Tiefgarage"},{"id":"area29","name":"Parkplatz Klosterstraße Pirna","coords":[[50.9636389,13.93525],[50.9637222,13.9358333],[50.96325,13.9356944],[50.9631944,13.93525]],"chargers":[],"center":[50.9634514,13.9355069],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area30","name":"Parkplatz Grohmannstraße","coords":[[50.9631944,13.9375556],[50.9631667,13.9380556],[50.9628333,13.9379167],[50.9629167,13.9374444]],"chargers":[],"center":[50.9630278,13.9377431],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area31","name":"Parkplatz Alstadt Apcoa","coords":[[50.9631667,13.9384444],[50.9630833,13.939],[50.96275,13.9389444],[50.9627778,13.93825]],"chargers":[],"center":[50.9629445,13.9386597],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"garage","parkingCategoryLabel":"Parkhaus / Tiefgarage"},{"id":"area32","name":"Motorrad Parkplatz","coords":[[50.9610556,13.9380278],[50.9609722,13.9385556],[50.9609722,13.9384722],[50.9610278,13.9380833]],"chargers":[],"center":[50.9610069,13.9382847],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"motorcycle","parkingCategoryLabel":"Motorradparkplatz"},{"id":"area33","name":"Parkplatz Elbeparkplatz","coords":[[50.9643056,13.94025],[50.9643333,13.9419167],[50.9641111,13.9417778],[50.9641389,13.9400556]],"chargers":[],"center":[50.9642222,13.941],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area34","name":"Parkplatz am Zwinger","coords":[[50.9639444,13.9418889],[50.9639167,13.9451944],[50.9636667,13.9451667],[50.9638333,13.9418889]],"chargers":[{"name":"Ladesäule SachsenEnergie","coords":[50.9639444,13.9416667]}],"center":[50.9638403,13.9435347],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area35","name":"Parkplatz Marktplatz","coords":[[50.9628333,13.9413611],[50.9626944,13.9425556],[50.9621944,13.9424722],[50.9622778,13.94125]],"chargers":[],"center":[50.9625,13.9419097],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"},{"id":"area36","name":"Parkzone Lange Str.","coords":[[50.9635833,13.9398333],[50.9635,13.9398056],[50.96325,13.9441111],[50.9631944,13.9441111]],"chargers":[],"center":[50.9633819,13.9419653],"geometry":"street-zone","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"street","parkingCategoryLabel":"Straßenparkzone"},{"id":"area37","name":"Parkplatz Dresdner Str. McDonald`s","coords":[[50.9566111,13.9133056],[50.9566389,13.9137778],[50.9562778,13.9138056],[50.9562778,13.9133056]],"chargers":[],"center":[50.9564514,13.9135486],"geometry":"area","note":"Aus Nutzerliste übernommen; Verfügbarkeit, Öffnungszeiten, Parkberechtigung und Gebühren nicht geprüft.","parkingCategory":"lot","parkingCategoryLabel":"Parkplatz / Parkfläche"}];
+const items=[
+{id:'g1',name:'Parkhaus Altstadt',type:'garage',lat:50.9634,lon:13.937,addr:'Grohmannstraße 1, 01796 Pirna',capacity:216,free:78,tariff:'1,50 € je 45 Minuten · max. 11 € / Tag',rate:1.5,unit:.75,max:11,open:'Täglich 24 Stunden'},
+{id:'g2',name:'Parkhaus Stadtmitte',type:'garage',lat:50.9598,lon:13.9465,addr:'Ernst-Thälmann-Platz 2, 01796 Pirna',capacity:510,free:164,tariff:'1,20 € je Stunde · max. 10 € / Tag',rate:1.2,unit:1,max:10,open:'Einfahrt 4:30–20 Uhr'},
+{id:'g3',name:'Parkhaus Am Steinplatz',type:'garage',lat:50.965,lon:13.9475,addr:'Steinplatz 2b, 01796 Pirna',capacity:276,free:22,tariff:'1,00 € je 45 Minuten · max. 11 € / Tag',rate:1,unit:.75,max:11,open:'Täglich 5:30–21 Uhr'},
+{id:'g4',name:'Parkhaus Quartier 1',type:'garage',lat:50.9631,lon:13.9415,addr:'Lange Straße 32, 01796 Pirna',capacity:60,free:8,tariff:'1,50 € erste Stunde, danach 1,00 € / Std.',rate:1.5,unit:1,max:99,open:'Täglich 24 Stunden'},
+{id:'s1',name:'Straßenparken Altstadt (Zone 2)',type:'street',lat:50.9608,lon:13.937,addr:'Altstadt, 01796 Pirna',free:null,tariff:'1,00 € je angefangene 30 Minuten · Mindestgebühr 2,00 €',rate:1,unit:.5,max:99,open:'Gebührenpflichtig 8–19 Uhr'},
+{id:'v1',name:'Historischer Marktplatz',type:'sight',lat:50.9627,lon:13.9414,addr:'Am Markt, 01796 Pirna',price:0,desc:'Historischer Marktplatz in der Altstadt'},
+{id:'v2',name:'Schloss Sonnenstein',type:'sight',lat:50.9622,lon:13.9508,addr:'Schlosshof 2/4, 01796 Pirna',price:0,desc:'Schlossanlage von außen; Bastionenführung saisonal und kostenpflichtig'},
+{id:'v3',name:'StadtMuseum Pirna',type:'sight',lat:50.964,lon:13.9395,addr:'Klosterhof 2, 01796 Pirna',price:6,desc:'Erwachsene 6 €, ermäßigt 4 €, bis 18 Jahre frei; Di–So 10–17 Uhr'},
+{id:'v4',name:'Stadtkirche St. Marien',type:'sight',lat:50.9638,lon:13.9427,addr:'Kirchplatz 14, 01796 Pirna',price:0,desc:'Besichtigung; Spende empfohlen (1 € pro Erwachsenem)'},
+{id:'f1',name:'Restaurant Schifftor',type:'food',lat:50.9618,lon:13.9439,addr:'Lange Straße 31, 01796 Pirna',price:22,desc:'Restaurant · Budget pro Person simuliert'},
+{id:'f2',name:'Platzhirsch Pirna',type:'food',lat:50.9627,lon:13.9406,addr:'Am Markt 4, 01796 Pirna',price:20,desc:'Burgerrestaurant · Budget pro Person simuliert'},
+{id:'f3',name:'Restaurant Felsenbirne',type:'food',lat:50.9621,lon:13.9451,addr:'Lange Straße 34, 01796 Pirna',price:32,desc:'Restaurant · Budget pro Person simuliert'},
+{id:'f4',name:'Canaletto Pirna',type:'food',lat:50.9628,lon:13.9425,addr:'Schuhgasse 16, 01796 Pirna',price:14,desc:'Café und Restaurant · Budget pro Person simuliert'},
+{id:'f5',name:'Funkenhöfchen',type:'food',lat:50.9637,lon:13.9425,addr:'Kirchplatz 1, 01796 Pirna',price:24,desc:'Restaurant · Budget pro Person simuliert'},
+{id:'e1',name:'Öffentliche Altstadtführung',type:'event',lat:50.9627,lon:13.9414,addr:'TouristService Pirna, Am Markt 7',date:'2026-10-28T17:00:00',dateLabel:'28.10. · 17:00',price:null,desc:'Altstadtführung · Erwachsene 8 €, ermäßigt 5 € · Treffpunkt TouristService Pirna, Am Markt 7'},
+{id:'e2',name:'Pirna im Gespräch – Können WIR Reform?',type:'event',lat:50.9625,lon:13.942,addr:'Pirna · Veranstaltungsort im Kalender prüfen',date:'2026-10-30T19:00:00',dateLabel:'30.10. · 19:00',price:null,desc:'Gespräch · Veranstaltungsort im offiziellen Kalender prüfen'},
+{id:'e3',name:'Öffentliche Sonderführung – Verborgenes in Pirna',type:'event',lat:50.9638,lon:13.9427,addr:'Pirna Altstadt',date:'2026-10-31T14:00:00',dateLabel:'31.10. · 14:00',price:null,desc:'Sonderführung · Preis nicht verifiziert'},
+{id:'e4',name:'Halloween Special',type:'event',lat:50.9625,lon:13.942,addr:'UNIWERK – Alte Feuerwache, Obere Burgstraße 6b',date:'2026-10-31T20:00:00',dateLabel:'31.10. · 20:00',price:null,desc:'Tanzabend · Eintritt 5 € plus Spende · Abendkasse'},
+{id:'e5',name:'Musik im Fluss der Jahrhunderte',type:'event',lat:50.9625,lon:13.942,addr:'Pirna · Veranstaltungsort im Kalender prüfen',date:'2026-11-01T15:00:00',dateLabel:'01.11. · 15:00',price:null,desc:'Konzert · Eintrittspreis nicht verifiziert'}
+];// Zusätzliche Parkflächen: nur Geometrie bekannt, keine Belegung oder Preise.
+items.push(...importedAreas.map(a=>({id:a.id,name:a.name,type:(a.parkingCategory==='garage'?'garage':'street'),parkingCategory:a.parkingCategory,parkingCategoryLabel:a.parkingCategoryLabel,lat:a.center[0],lon:a.center[1],addr:'Pirna · Bereich aus Koordinatenliste',free:null,rate:null,unit:null,max:null,tariff:'Gebühren unbekannt',open:'Zugänglichkeit und Regeln vor Ort prüfen',survey:true,geometry:a.geometry,coords:a.coords,chargers:a.chargers})));
+const get=id=>items.find(p=>p.id===id);let tab='parking',category='all',discover='all',start='g1',people=2,hours=3,stops=['v1','v4','f4'],selected=null,search='',routeShown=false,zoom=15,center={lat:50.9625,lon:13.942},mw=390,mh=355,timer;
+
+// Automatische Aktualisierung: Die Oberfläche bleibt unverändert.
+const EVENTS_URL='events.json';
+const cleanText=v=>String(v??'').replace(/[&<>\"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c]));
+async function updateEvents(){
+  try{
+    const r=await fetch(EVENTS_URL+'?v='+Date.now(),{cache:'no-store'});
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    const payload=await r.json();
+    if(!Array.isArray(payload.events)||!payload.events.length)throw new Error('Keine Daten');
+    const entries=payload.events.filter(p=>p.name&&/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/.test(p.date||'')).slice(0,120).map((p,i)=>({
+      id:'live-event-'+i,name:cleanText(p.name).slice(0,170),type:'event',
+      lat:Number.isFinite(+p.lat)&&+p.lat>50.85&&+p.lat<51.1?+p.lat:50.9625,
+      lon:Number.isFinite(+p.lon)&&+p.lon>13.8&&+p.lon<14.1?+p.lon:13.942,
+      addr:cleanText(p.addr||'Pirna · Ort im Veranstaltungskalender prüfen').slice(0,200),
+      date:p.date,dateLabel:cleanText(p.dateLabel||''),price:null,
+      desc:cleanText(p.desc||'Aktuelle Veranstaltung im offiziellen Pirna-Kalender').slice(0,260),
+      url:/^https:\/\/www\.pirna\.de\//.test(p.url||'')?p.url:null
+    }));
+    if(!entries.length)throw new Error('Keine gültigen Termine');
+    const existing=items.filter(p=>p.type==='event');
+    existing.forEach(p=>items.splice(items.indexOf(p),1));
+    items.push(...entries);
+    const status=document.getElementById('event-status');
+    if(status){const d=payload.updated_at?new Date(payload.updated_at):null;
+      status.textContent=d&&!isNaN(d)?'Letzter Datenabgleich: '+d.toLocaleString('de-DE'):'Gespeicherte Veranstaltungsdaten geladen';}
+    renderDiscover();if(tab==='parking')pins();
+  }catch(err){const status=document.getElementById('event-status');
+    if(status)status.textContent='Offline / Datenquelle nicht erreichbar – gespeicherte Termine werden angezeigt';}
+}
+const map=L.map('map',{zoomControl:true,scrollWheelZoom:true,tap:false}).setView([50.9625,13.942],15);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap-Mitwirkende</a>'
+}).addTo(map);
+const markerLayer=L.layerGroup().addTo(map);
+const routeLayer=L.layerGroup().addTo(map);
+const areaLayer=L.layerGroup().addTo(map);const chargerLayer=L.layerGroup().addTo(map);
+map.on('moveend zoomend',()=>{center={lat:map.getCenter().lat,lon:map.getCenter().lng};zoom=map.getZoom()});
+function tiles(){map.invalidateSize();pins()}
+function routeIds(){return [start,...stops].filter(id=>get(id))}
+function googleRoute(){
+  const pts=routeIds().map(id=>get(id));
+  if(pts.length<2){notice('Füge mindestens einen Stopp zur Erlebnisroute hinzu.');return}
+  // Google Maps URLs officially support up to three intermediate waypoints in mobile browsers.
+  if(pts.length>5){notice('Google Maps unterstützt auf mobilen Browsern nur 3 Zwischenstopps. Bitte reduziere die Route auf höchstens 5 Orte.');return}
+  const coord=p=>`${p.lat},${p.lon}`;
+  const params=new URLSearchParams({api:'1',origin:coord(pts[0]),destination:coord(pts[pts.length-1]),travelmode:'walking'});
+  if(pts.length>2)params.set('waypoints',pts.slice(1,-1).map(coord).join('|'));
+  window.open('https://www.google.com/maps/dir/?'+params.toString(),'_blank','noopener,noreferrer');
+}
+function showFullRoute(){
+  if(!stops.length){notice('Wähle zuerst mindestens einen Stopp für deine Erlebnisroute.');return}
+  routeShown=true;selected=null;category='all';search='';$('#search').value='';
+  $$('[data-chip]').forEach(c=>{if(c.dataset.chip!=='advanced')c.classList.toggle('on',c.dataset.chip==='all')});
+  switchTab('parking');
+  const bounds=L.latLngBounds(routeIds().map(id=>{const p=get(id);return [p.lat,p.lon]}));
+  setTimeout(()=>{map.invalidateSize();map.fitBounds(bounds.pad(.23),{maxZoom:17});pins()},100);
+}
+function active(p){if(category!=='all'&&p.type!==category)return false;if(!p.name.toLowerCase().includes(search))return false;if(p.type==='event'&&new Date(p.date)<new Date())return false;if($('#cheap').checked&&['garage','street'].includes(p.type)&&!(typeof p.rate==='number'&&typeof p.unit==='number'&&p.rate/p.unit<=1.5))return false;if($('#freesights').checked&&p.type==='sight'&&p.price>0)return false;return true}
+function parkingCost(p,h){if(p.survey)return null;if(p.id==='g4')return 1.5+Math.max(0,Math.ceil(h-1));const val=Math.ceil(h/p.unit)*p.rate;return p.id==='s1'?Math.max(2,val):Math.min(p.max,val)}
+function pins(){
+  markerLayer.clearLayers();routeLayer.clearLayers();areaLayer.clearLayers();chargerLayer.clearLayers();
+  // Flächen und die Lange Straße als Korridor darstellen, statt fiktiver freier Stellplätze.
+  importedAreas.forEach(a=>{
+    const p=get(a.id);if(!active(p)&&!(routeShown&&routeIds().includes(p.id)))return;
+    const selectedArea=selected===a.id;
+    const hue=a.parkingCategory==='garage'?'#3567bc':a.parkingCategory==='street'?'#e48b32':a.parkingCategory==='motorcycle'?'#8d63c2':'#149e8b';
+    const opts={color:selectedArea?'#173d37':hue,weight:selectedArea?5:2,fillColor:hue,fillOpacity:selectedArea?.48:.20};
+    const shape=a.geometry==='street-zone'?L.polygon(a.coords,{...opts,dashArray:'6,5'}):L.polygon(a.coords,opts);
+    shape.addTo(areaLayer).bindTooltip(a.name+' · '+a.parkingCategoryLabel).on('click',()=>{selected=a.id;pins();map.fitBounds(L.latLngBounds(a.coords).pad(.8),{maxZoom:18})});
+    a.chargers.forEach(c=>{
+      const ico=L.divIcon({html:'<span class="charge-pin">⚡</span>',className:'',iconSize:[25,25],iconAnchor:[12,12]});
+      L.marker(c.coords,{icon:ico,title:c.name+' (Betriebsstatus unbekannt)'}).addTo(chargerLayer)
+       .bindPopup('<strong>'+c.name+'</strong><br>Ladepunkt aus Liste · Status unbekannt');
+    });
+  });
+  const ids=routeShown?routeIds():[];
+  const included=new Set(ids);
+  items.filter(p=>active(p)||included.has(p.id)).forEach(p=>{
+    const n=ids.indexOf(p.id);
+    const label=n>=0?(n===0?'P':String(n)):p.survey?(p.parkingCategory==='garage'?'🅿️':p.parkingCategory==='street'?'🚗':p.parkingCategory==='motorcycle'?'🏍️':'P'):p.type==='garage'?'🅿 '+p.free:p.type==='street'?'🚗':p.type==='sight'?'🏛':p.type==='food'?'🍴':'📅';
+    const cl=n>=0?'route-dot '+(n===0?'start':''):'pin-marker '+p.type+(selected===p.id?' on':'');
+    const icon=L.divIcon({html:`<span class="${cl}">${label}</span>`,className:'',iconSize:[38,38],iconAnchor:[19,19]});
+    L.marker([p.lat,p.lon],{icon,title:p.name}).addTo(markerLayer).on('click',()=>{selected=p.id;pins()});
+  });
+  if(routeShown&&ids.length>1){
+    const latlngs=ids.map(id=>{const p=get(id);return [p.lat,p.lon]});
+    L.polyline(latlngs,{color:'#087b77',weight:5,opacity:.9,dashArray:'8,8'}).addTo(routeLayer);
+  }
+  $('#map-route-actions').classList.toggle('hidden',!routeShown);
+  $('#map-route-count').textContent=`${Math.max(0,ids.length-1)} Stopps · Verbindung schematisch`;
+  const p=get(selected);if(!p){$('#detail').innerHTML='';return}
+  const park=['garage','street'].includes(p.type),canAdd=p.type!=='event';
+  const cost=park?(p.survey?p.parkingCategoryLabel+' · Gebühren unbekannt':p.tariff):p.type==='food'?'Testbudget: '+fmt(p.price)+'/Person':p.type==='sight'?(p.price?fmt(p.price)+' Eintritt (Erwachsene)':'Kein fester Eintritt'):p.dateLabel;
+  $('#detail').innerHTML=`<div class="panel"><div class="row"><div><div class="cardtitle">${p.name}</div><div class="sub">${p.addr}</div></div><button class="smallbtn" data-close aria-label="Schließen">×</button></div><div class="sectiongap sub">${park?(p.survey?'Freie Plätze: unbekannt · Parkberechtigung vor Ort prüfen':p.type==='garage'?p.free+' von '+p.capacity+' Plätzen frei (Demo)':'Freie Plätze: unbekannt')+(p.survey?' <span class="badge">aus Liste</span>':' <span class="badge sim">Demo</span>'):p.desc||''}</div><div class="sectiongap" style="font-size:13px;font-weight:700">${cost}</div>${park?`<div class="sub sectiongap">${p.open}</div>`:''}<div class="buttons">${canAdd?`<button class="btn alt" data-add="${p.id}">${park?'Als Start wählen':stops.includes(p.id)?'Entfernen':'+ Zur Route'}</button>`:'<button class="btn alt" data-tab="discover">Events ansehen</button>'}<button class="btn" data-drive="${p.id}">↗ Route starten</button></div></div>`;
+}
+function notice(s){$('#notice').textContent=s;$('#notice').classList.remove('hidden');clearTimeout(timer);timer=setTimeout(()=>$('#notice').classList.add('hidden'),4300)}
+function renderRoute(){
+  $('#start').value=start;$('#people').value=people;$('#hours').value=hours;
+  $('#route-overview-count').textContent=`${stops.length} ${stops.length===1?'Ziel':'Ziele'} ausgewählt`;
+  const makeOption=p=>`<div class="option"><div class="option-text"><div class="cardtitle">${p.name}</div><div class="sub">${p.type==='food'?fmt(p.price)+' · Budget/Person (Demo)':p.price?fmt(p.price)+' · Eintritt':'Kostenlos / Spende möglich'}</div></div><button class="smallbtn ${stops.includes(p.id)?'selected':''}" data-stop="${p.id}">${stops.includes(p.id)?'✓ Gewählt':'+ Hinzu'}</button></div>`;
+  $('#sight-options').innerHTML=items.filter(p=>p.type==='sight').map(makeOption).join('');
+  $('#food-options').innerHTML=items.filter(p=>p.type==='food').map(makeOption).join('');
+  $('#stops').innerHTML=`<div class="stop"><div class="num">P</div><div><div class="cardtitle">${get(start).name}</div><div class="sub">Start · ${hours} Stunden parken</div></div></div>`+
+    (stops.length?stops.map((id,i)=>`<div class="stop"><div class="num">${i+1}</div><div class="stop-text"><div class="cardtitle">${get(id).name}</div><div class="sub">${get(id).type==='food'?'🍽️ Restaurant / Café':'🏛️ Sehenswürdigkeit'}</div></div><button class="smallbtn" data-stop="${id}" aria-label="${get(id).name} entfernen">✕</button></div>`).join(''):'<div class="empty-state">Noch keine Ziele gewählt. Oben kannst du Orte hinzufügen.</div>');
+  const parkRaw=parkingCost(get(start),hours),park=parkRaw??0,entry=stops.filter(id=>get(id).type==='sight').reduce((s,id)=>s+get(id).price,0),food=stops.filter(id=>get(id).type==='food').reduce((s,id)=>s+get(id).price,0);
+  $('#per').textContent=fmt(park/people+entry+food)+(parkRaw===null?'*':'');$('#total').textContent=fmt(park+(entry+food)*people)+(parkRaw===null?'*':'');
+  $('#breakdown').innerHTML=`<div class="row"><span>🅿️ Parken (anteilig)</span><span>${parkRaw===null?'unbekannt / nicht enthalten':fmt(park/people)}</span></div><div class="row"><span>🏛️ Eintritte</span><span>${fmt(entry)}</span></div><div class="row"><span>🍽️ Essen (Demo-Budget)</span><span>${fmt(food)}</span></div>`;
+}
+function renderDiscover(){
+  const types=[{id:'sight',icon:'🏛️',name:'Sehenswürdigkeiten',hint:'Kultur, Geschichte & besondere Orte'},
+               {id:'food',icon:'🍽️',name:'Essen & Trinken',hint:'Restaurants und Cafés in der Altstadt'},
+               {id:'event',icon:'📅',name:'Veranstaltungen',hint:'Was demnächst in Pirna los ist'}];
+  const available=items.filter(p=>p.type!=='event'||new Date(p.date)>=new Date());
+  const card=p=>`<article class="discover-card"><div class="discover-card-top"><div class="discover-card-info"><div class="cardtitle">${p.name}</div><div class="sub">${p.addr}</div></div><button class="smallbtn" data-focus="${p.id}">Karte ↗</button></div><div class="sub sectiongap">${p.type==='event'?'<span class="eventdate">'+p.dateLabel+'</span> · ':''}${p.desc||''}</div><div class="discover-card-foot">${p.type==='sight'?`<span class="info-pill">${p.price?fmt(p.price)+' Eintritt':'Eintritt frei'}</span>`:p.type==='food'?`<span class="info-pill">${fmt(p.price)} Demo-Budget / Person</span>`:'<span class="info-pill">Termin prüfen</span>'}${p.type!=='event'?`<button class="smallbtn ${stops.includes(p.id)?'selected':''}" data-stop="${p.id}">${stops.includes(p.id)?'✓ In Route':'+ Zur Route'}</button>`:`<a class="a" target="_blank" rel="noopener" href="${p.url||'https://www.pirna.de/pirna-erleben/veranstaltungen/veranstaltungskalender/'}">Mehr Infos ↗</a>`}</div></article>`;
+  $('#discovercards').innerHTML=types.filter(t=>discover==='all'||discover===t.id).map(t=>{
+    const list=available.filter(p=>p.type===t.id);
+    return `<div class="discover-section"><div class="discover-section-head"><div><div class="discover-section-title">${t.icon} ${t.name}</div><div class="sub">${t.hint}</div></div><span class="count-pill">${list.length}</span></div>${list.length?list.map(card).join(''):'<div class="empty-state">Aktuell keine kommenden Termine im gespeicherten Datenstand. Bitte den Veranstaltungskalender prüfen.</div>'}</div>`;
+  }).join('');
+}
+function switchTab(t){tab=t;$$('[data-tab]').forEach(b=>b.classList.toggle('on',b.dataset.tab===t));['parking','routes','discover','info','credits'].forEach(k=>$('#'+k).classList.toggle('hidden',k!==t));if(t==='parking')setTimeout(tiles,0);if(t==='routes')renderRoute();if(t==='discover')renderDiscover()}
+$('#start').innerHTML=items.filter(p=>['garage','street'].includes(p.type)).map(p=>`<option value="${p.id}">${p.name}</option>`).join('');
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.tab){switchTab(b.dataset.tab);return}if(b.dataset.chip){if(b.dataset.chip==='advanced'){$('#advanced').classList.toggle('hidden');b.classList.toggle('on')}else{category=b.dataset.chip;$$('[data-chip]').forEach(c=>{if(c.dataset.chip!=='advanced')c.classList.toggle('on',c.dataset.chip===category)});selected=null;pins()}return}if(b.dataset.discover){discover=b.dataset.discover;$$('[data-discover]').forEach(c=>c.classList.toggle('on',c.dataset.discover===discover));renderDiscover();return}if(b.dataset.place){selected=b.dataset.place;pins();return}if(b.hasAttribute('data-close')){selected=null;pins();return}if(b.dataset.focus){const p=get(b.dataset.focus);selected=p.id;center={lat:p.lat,lon:p.lon};zoom=16;map.setView([p.lat,p.lon],16);category='all';$$('[data-chip]').forEach(c=>{if(c.dataset.chip!=='advanced')c.classList.toggle('on',c.dataset.chip==='all')});switchTab('parking');return}if(b.dataset.add){const p=get(b.dataset.add);if(['garage','street'].includes(p.type))start=p.id;else stops=stops.includes(p.id)?stops.filter(id=>id!==p.id):[...stops,p.id];switchTab('routes');return}if(b.dataset.drive){const p=get(b.dataset.drive);const url='https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(p.lat+','+p.lon)+'&travelmode='+(['garage','street'].includes(p.type)?'driving':'walking');window.open(url,'_blank','noopener,noreferrer');return}if(b.dataset.stop){const id=b.dataset.stop;stops=stops.includes(id)?stops.filter(x=>x!==id):[...stops,id];routeShown=false;renderRoute();renderDiscover();pins();return}if(b.id==='done'){$('#advanced').classList.add('hidden');$('[data-chip="advanced"]').classList.remove('on');pins();return}if(b.id==='reset'){$('#cheap').checked=$('#freesights').checked=false;pins();return}if(b.id==='clearroute'){stops=[];routeShown=false;renderRoute();renderDiscover();pins();return}if(b.id==='showroute'){showFullRoute();return}if(b.id==='google-route'){googleRoute();return}if(b.id==='locate'){if(!navigator.geolocation){notice('Standort nicht verfügbar.');return}notice('Standort wird ermittelt …');navigator.geolocation.getCurrentPosition(pos=>{const lat=pos.coords.latitude,lon=pos.coords.longitude;if(Math.abs(lat-50.9625)>.08||Math.abs(lon-13.942)>.12){notice('Dein Standort liegt außerhalb der Pirna-Karte.');return}center={lat,lon};zoom=16;map.setView([lat,lon],16);tiles();notice('Dein Standort ist in der Kartenmitte.')},()=>notice('Standort nicht verfügbar. Bitte Freigabe prüfen.'),{timeout:9000});return}});
+['cheap','freesights'].forEach(id=>$('#'+id).addEventListener('change',pins));$('#search').addEventListener('input',e=>{search=e.target.value.toLowerCase().trim();if(tab!=='parking')switchTab('parking');pins()});$('#start').addEventListener('change',e=>{start=e.target.value;routeShown=false;renderRoute();pins()});$('#people').addEventListener('change',e=>{people=+e.target.value;renderRoute()});$('#hours').addEventListener('change',e=>{hours=+e.target.value;renderRoute()});renderRoute();renderDiscover();tiles();window.addEventListener('resize',()=>{if(tab==='parking')tiles()});updateEvents();setInterval(updateEvents,30*60*1000);if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}));}
+
+// Rewards-Demo: Punkte nur nach zwei GPS-Messungen; kein echter Restaurant-Rabatt.
+const CREDIT_KEY='pirnasmart-rewards-v1';
+let creditState;
+try{creditState=JSON.parse(localStorage.getItem(CREDIT_KEY)||'{}')}catch(e){creditState={}}
+if(!creditState||typeof creditState!=='object')creditState={};
+creditState.visits=creditState.visits||{};
+creditState.routeDays=creditState.routeDays||{};
+creditState.points=Number(creditState.points)||0;
+const dayKey=()=>new Date().toLocaleDateString('sv-SE');
+const saveCredits=()=>{try{localStorage.setItem(CREDIT_KEY,JSON.stringify(creditState))}catch(e){}};
+const renderCredits=()=>{$('#credit-balance').textContent=creditState.points+' Credits'};
+const eligiblePlaces=items.filter(p=>p.type==='sight'||p.type==='food');
+$('#credit-place').innerHTML='<option value="">Ort auswählen</option>'+eligiblePlaces.map(p=>'<option value="'+p.id+'">'+p.name+'</option>').join('');
+$('#credit-place').addEventListener('change',()=>{
+ const p=get($('#credit-place').value);
+ $('#partner-row').classList.toggle('hidden',!p||p.type!=='food');
+ $('#credit-status').textContent=p&&p.type==='food'?'Restaurantbesuche brauchen später einen echten Partnercode. Aktuell keine Partner freigeschaltet.':'Besuch am Ziel per GPS bestätigen.';
+});
+const gps=()=>new Promise((resolve,reject)=>{
+ if(!navigator.geolocation)return reject(new Error('Standort auf diesem Gerät nicht verfügbar.'));
+ navigator.geolocation.getCurrentPosition(x=>resolve(x.coords),()=>reject(new Error('Standortzugriff nicht möglich. Bitte Safari-Berechtigung und HTTPS prüfen.')),{enableHighAccuracy:true,timeout:16000,maximumAge:0});
+});
+const meters=(a,b,c,d)=>{
+ const r=6371000,rd=Math.PI/180,dl=(c-a)*rd,dn=(d-b)*rd;
+ const h=Math.sin(dl/2)**2+Math.cos(a*rd)*Math.cos(c*rd)*Math.sin(dn/2)**2;
+ return 2*r*Math.atan2(Math.sqrt(h),Math.sqrt(1-h));
+};
+let checking=false;
+$('#credit-check').addEventListener('click',async()=>{
+ const p=get($('#credit-place').value);
+ if(!p){$('#credit-status').textContent='Bitte zuerst einen Ort auswählen.';return}
+ if(p.type==='food'){$('#credit-status').textContent='Restaurant-Credits sind noch nicht freigeschaltet: Es gibt keine verifizierten Partnercodes. Für echte Restaurantbesuche muss ein Restaurant teilnehmen.';return}
+ if(creditState.visits[dayKey()+'|'+p.id]){$('#credit-status').textContent='Diesen Ort hast du heute bereits bestätigt.';return}
+ if(checking)return;
+ checking=true;$('#credit-check').disabled=true;
+ try{
+  $('#credit-status').textContent='Standortprüfung 1/2 …';
+  const a=await gps();
+  if(meters(a.latitude,a.longitude,p.lat,p.lon)>120)throw new Error('Du bist mehr als 120 m vom ausgewählten Ort entfernt.');
+  $('#credit-status').textContent='In Reichweite! Bitte 60 Sekunden am Ort bleiben. Danach erfolgt eine zweite Standortprüfung.';
+  await new Promise(r=>setTimeout(r,60000));
+  const b=await gps();
+  if(meters(b.latitude,b.longitude,p.lat,p.lon)>120)throw new Error('Bei der zweiten Prüfung warst du nicht mehr in Reichweite.');
+  creditState.visits[dayKey()+'|'+p.id]=true;creditState.points+=20;saveCredits();renderCredits();
+  $('#credit-status').textContent='✓ Besuch bestätigt: +20 Credits. (Demo, lokal gespeichert)';
+ }catch(err){$('#credit-status').textContent=err.message||'Standortprüfung fehlgeschlagen.'}
+ finally{checking=false;$('#credit-check').disabled=false}
+});
+$('#credit-route').addEventListener('click',()=>{
+ const day=dayKey();
+ if(creditState.routeDays[day]){$('#credit-status').textContent='Der Routenbonus wurde heute bereits vergeben.';return}
+ const done=stops.filter(id=>creditState.visits[day+'|'+id]);
+ if(done.length<2){$('#credit-status').textContent='Für den Routenbonus musst du zwei Ziele aus deiner geplanten Route heute per GPS bestätigen. Bisher: '+done.length+'/2.';return}
+ creditState.routeDays[day]=true;creditState.points+=50;saveCredits();renderCredits();
+ $('#credit-status').textContent='✓ Erlebnisroute nachgewiesen: +50 Credits (Demo).';
+});
+document.addEventListener('click',e=>{
+ const b=e.target.closest('[data-reward]');if(!b)return;
+ const cost=Number(b.dataset.reward);
+ $('#credit-voucher').textContent=creditState.points<cost?
+ 'Für diese Musterprämie fehlen dir noch '+(cost-creditState.points)+' Credits.':
+ 'Musterprämie freigeschaltet! Keine echte Einlösung möglich – Partner und Gutscheinsystem noch nicht angebunden.';
+});
+renderCredits();
+
+})();}</script></body></html>
